@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pocApp/widgets/playground/dtop-area.dart';
+import 'package:pocApp/widgets/playground/drop-area.dart';
 import 'package:pocApp/widgets/toolbox/toolbox-item.dart';
 
 class MyHomePage extends StatefulWidget {

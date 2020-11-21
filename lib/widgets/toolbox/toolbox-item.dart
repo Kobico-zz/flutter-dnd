@@ -9,23 +9,33 @@ class ToolboxItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var itemInList = Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(width: 1, color: Colors.indigo))
+        ),
+        child: _item(this.name, this.icon)
+    );
+    var itemAsFeedback = Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.indigo)
+        ),
+        child: Center(child: _item(this.name, this.icon))
+    );
     return Draggable(
-      data: this.name,
-      feedback: _item(this.name, this.icon, fullBorder: true),
-      childWhenDragging: _item(this.name, this.icon),
+      data: this.name?.toLowerCase(),
+      feedback: itemAsFeedback,
+      childWhenDragging: itemInList,
       child: MouseRegion(
         cursor: SystemMouseCursors.grab,
-        child: _item(this.name, this.icon),
+        child: itemInList
       )
     );
   }
 
-  Widget _item(String text, IconData icon, {bool fullBorder = false}) {
+  Widget _item(String text, IconData icon) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
-          border: fullBorder ? Border.all(color: Colors.indigo) : Border(bottom: BorderSide(width: 1, color: Colors.indigo))
-      ),
       child: MouseRegion(
           cursor: SystemMouseCursors.grab,
           child: Row(
